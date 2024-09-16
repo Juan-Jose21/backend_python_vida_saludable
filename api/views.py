@@ -42,21 +42,43 @@ class ProyectoViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         return Response({
             "success": True,
-            "message": "Proyecto registrado correctamente",
             "data": serializer.data
         }, status=status.HTTP_201_CREATED)
-    
+
+    def update(self, request, *args, **kwargs):
+        partial = True  # Para permitir actualizaciones parciales
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response({
+            "success": True,
+            "data": serializer.data
+        }, status=status.HTTP_200_OK)
+
+    def perform_update(self, serializer):
+        # Guarda la instancia y actualiza solo el campo `estado` si está en los datos
+        instance = serializer.save()
+        # Actualiza el campo `estado` si está presente en los datos de la solicitud
+        estado = serializer.validated_data.get('estado')
+        if estado is not None:
+            instance.estado = estado
+        instance.save()
+
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
+        project_id = instance.id
         self.perform_destroy(instance)
         return Response({
             "success": True,
+            "data": {
+                "id": project_id
+            },
             "message": "Proyecto eliminado correctamente"
         }, status=status.HTTP_200_OK)
 
     def perform_destroy(self, instance):
         instance.delete()
-
 # class ProyectoViewSet(viewsets.ModelViewSet):
 #     queryset = Proyecto.objects.all()
 #     serializer_class = ProyectoSerializer
