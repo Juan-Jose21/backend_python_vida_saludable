@@ -78,7 +78,6 @@ class AguaViewSet(viewsets.ModelViewSet):
     serializer_class = AguaSerializer
     # permission_classes = [IsAuthenticated]
 
-
 class EsperanzaViewSet(viewsets.ModelViewSet):
     queryset = Esperanza.objects.all()
     serializer_class = EsperanzaSerializer
