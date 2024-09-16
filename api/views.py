@@ -42,8 +42,20 @@ class ProyectoViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         return Response({
             "success": True,
+            "message": "Proyecto registrado correctamente",
             "data": serializer.data
         }, status=status.HTTP_201_CREATED)
+    
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({
+            "success": True,
+            "message": "Proyecto eliminado correctamente"
+        }, status=status.HTTP_200_OK)
+
+    def perform_destroy(self, instance):
+        instance.delete()
 
 # class ProyectoViewSet(viewsets.ModelViewSet):
 #     queryset = Proyecto.objects.all()
