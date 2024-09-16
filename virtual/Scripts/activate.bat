@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\nesto\OneDrive\Desktop\vida_saludable\API\virtual
+set VIRTUAL_ENV=C:\Users\JUAN JOSE\Desktop\APP\backend_python_vida_saludable\virtual
 
 if not defined PROMPT set PROMPT=$P$G
 

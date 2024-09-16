@@ -118,11 +118,11 @@ WSGI_APPLICATION = 'live.wsgi.application'
 
 DATABASES = {
      'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vida_saludable',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',  # O la dirección IP de tu servidor MySQL
+           'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': '1ClavRbB5oyO',
+        'HOST': 'ep-winter-cherry-a51cqldl.us-east-2.aws.neon.tech',  # O la dirección IP de tu servidor MySQL
         'PORT': '5432',  # O el puerto que estés utilizando
     }
 }
