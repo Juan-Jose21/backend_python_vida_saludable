@@ -76,11 +76,6 @@ class ProyectoViewSet(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         instance.delete()
 
-# class ProyectoViewSet(viewsets.ModelViewSet):
-#     queryset = Proyecto.objects.all()
-#     serializer_class = ProyectoSerializer
-    # permission_classes = [IsAuthenticated]
-
 class UsuarioProyectoViewSet(viewsets.ModelViewSet):
     queryset = UsuarioProyecto.objects.all()
     serializer_class = UsuarioProyectoSerializer
@@ -91,16 +86,49 @@ class AlimentacionViewSet(viewsets.ModelViewSet):
     serializer_class = AlimentacionSerializer
     # permission_classes = [IsAuthenticated]
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
+
 
 class AguaViewSet(viewsets.ModelViewSet):
     queryset = Agua.objects.all()
     serializer_class = AguaSerializer
     # permission_classes = [IsAuthenticated]
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
+
 class EsperanzaViewSet(viewsets.ModelViewSet):
     queryset = Esperanza.objects.all()
     serializer_class = EsperanzaSerializer
     # permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class SolViewSet(viewsets.ModelViewSet):
@@ -108,11 +136,33 @@ class SolViewSet(viewsets.ModelViewSet):
     serializer_class = SolSerializer
     # permission_classes = [IsAuthenticated]
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
+
 
 class AireViewSet(viewsets.ModelViewSet):
     queryset = Aire.objects.all()
     serializer_class = AireSerializer
     # permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class DormirViewSet(viewsets.ModelViewSet):
@@ -120,17 +170,50 @@ class DormirViewSet(viewsets.ModelViewSet):
     serializer_class = DormirSerializer
     # permission_classes = [IsAuthenticated]
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
+
 
 class DespertarViewSet(viewsets.ModelViewSet):
     queryset = Despertar.objects.all()
     serializer_class = DespertarSerializer
     # permission_classes = [IsAuthenticated]
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
+
 
 class EjercicioViewSet(viewsets.ModelViewSet):
     queryset = Ejercicio.objects.all()
     serializer_class = EjercicioSerializer
     # permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'success': True,
+            'message': 'Se registro exitosamente',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class DatosCorporalesViewSet(viewsets.ModelViewSet):
